@@ -1,13 +1,9 @@
 /// <reference types="vite/client" />
-import {
-  HeadContent,
-  Link,
-  Scripts,
-  createRootRoute,
-} from "@tanstack/react-router";
+import { HeadContent, Scripts, createRootRoute, useRouterState } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
+import Header from "~/components/Header";
 import { NotFound } from "~/components/NotFound";
 import appCss from "~/styles/app.css?url";
 import { seo } from "~/utils/seo";
@@ -32,12 +28,6 @@ export const Route = createRootRoute({
       { rel: "manifest", href: "/site.webmanifest", color: "#fffff" },
       { rel: "icon", href: "/favicon.ico" },
     ],
-    scripts: [
-      {
-        src: "/customScript.js",
-        type: "text/javascript",
-      },
-    ],
   }),
   errorComponent: DefaultCatchBoundary,
   notFoundComponent: () => <NotFound />,
@@ -45,12 +35,16 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const routerState = useRouterState();
+  const hideHeader = routerState.location.pathname.startsWith("/login");
+
   return (
     <html>
       <head>
         <HeadContent />
       </head>
       <body>
+        {!hideHeader && <Header />}
         {children}
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />

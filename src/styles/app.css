@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --clr-primary: #0a0a0a;
+  --clr-secondary: #e5e5e5;
+}
+
 @layer base {
   html {
     color-scheme: light dark;
@@ -13,7 +18,7 @@
 
   html,
   body {
-    @apply text-neutral-900 bg-neutral-50;
+    @apply text-neutral-900 bg-neutral-100;
   }
 
   .using-mouse * {

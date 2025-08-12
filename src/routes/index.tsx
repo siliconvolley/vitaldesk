@@ -5,13 +5,13 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="p-2">
-      <h1 className="text-4xl text-center pt-24">
-        Welcome to <span className="font-bold">VitalDesk</span>
+    <main className="p-2 flex justify-center">
+      <h1 className="text-xl max-w-[65ch] text-center pt-24">
+        <span className="font-bold">VitalDesk</span> is a browser-based digital signage solution that displays
+        real-time patient information in hospital waiting areas—improving
+        communication, reducing confusion, and enhancing the patient experience.
+        🏥📺
       </h1>
-      <button className="flex mx-auto mt-8 bg-neutral-950 text-white px-8 py-2 rounded">
-        <Link to="/display">Display View</Link>
-      </button>
-    </div>
+    </main>
   );
 }
