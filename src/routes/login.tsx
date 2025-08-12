@@ -1,10 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { authClient } from "~/utils/auth-client";
 
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
 
+const logIn = () => {
+  authClient.signIn.social({
+    provider: "google",
+  });
+};
+
 function RouteComponent() {
+
   return (
     <main className="grid place-items-center h-screen">
       <section className="w-max h-[32rem]">
@@ -12,7 +20,7 @@ function RouteComponent() {
           Welcome to VitalDesk
         </p>
         <button
-          onClick={() => {}}
+          onClick={logIn}
           className="relative min-h-6 w-full py-3 mt-8 flex items-center justify-center border border-neutral-300 rounded-3xl hover:bg-sky-100 transition-colors duration-500 select-none"
         >
           <img
